@@ -12,8 +12,7 @@ on:
         default: "master"
         description: "编译的分支"
 env:
-  REF: ${GITHUB_REF}
-  BB: ${{ steps.extract_branch.outputs.branch }}
+  BUILD_BRANCH: ${{ github.event.inputs.buildBranch }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,8 +34,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo -------
-          echo ${GITHUB_REF}
-          echo ${BB}
+          echo ${BUILD_BRANCH}
           echo -------
           echo Add other actions to build,
           echo test, and deploy your project.
