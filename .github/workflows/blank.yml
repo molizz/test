@@ -6,7 +6,11 @@ name: CI
 # events but only for the master branch
 on:
   workflow_dispatch:
-
+    inputs:
+      buildBranch:
+        required: true
+        default: "master"
+        description: "编译的分支"
 env:
   REF: ${GITHUB_REF}
   BB: ${{ steps.extract_branch.outputs.branch }}
